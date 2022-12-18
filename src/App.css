@@ -1,0 +1,53 @@
+.App {
+  text-align: center;
+}
+
+.main-container {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1000px
+}
+
+.calc-screen{
+  border-radius: 10px;
+  margin: 10px;
+  width: 50%;
+  font-size: 3rem;
+  height: 100px;
+  text-align: right;
+}
+
+.calc-buttons{
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 10px;
+}
+
+.button{
+  height: 50px;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  background-color: #D5DAE3;
+}
+
+button:hover {
+  background-color: #eaeaea;
+}
+
+.number{
+  background-color: #F5F7FF;
+}
+
+.equal{
+  background-color: #32B4FA;
+}
+
+.equal:hover {
+  background-color: #4e9ed4;
+}
