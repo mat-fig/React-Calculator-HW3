@@ -26,6 +26,16 @@ function App() {
       acfunc()
       return
     }
+    //if value is a function
+    if (FUNCTION.includes(value)) {
+      evaluateFunction(value)
+      return
+    }
+    //if value is an option
+    if (OPTIONS.includes(value)) {
+      evaluateOption(value)
+      return
+    }
     if (calc.restarted) {
       setCalc(
         {
@@ -35,16 +45,6 @@ function App() {
           restarted: false
         }
       )
-      return
-    }
-    //if value is a function
-    if (FUNCTION.includes(value)) {
-      evaluateFunction(value)
-      return
-    }
-    //if value is an option
-    if (OPTIONS.includes(value)) {
-      evaluateOption(value)
       return
     }
     else if (calc.functionInUse) {
@@ -86,6 +86,7 @@ function App() {
         equation: [...calc.equation, ...subArray],
         display: [...calc.equation, ...subArray].join(''),
         functionInUse: true,
+        restarted: false
       })
   }
 
@@ -159,7 +160,8 @@ function App() {
             ...calc,
             equation: [],
             display: data,
-            restarted: true
+            restarted: true,
+            functionInUse: false,
           })
         })
     }
