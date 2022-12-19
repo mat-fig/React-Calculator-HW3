@@ -16,11 +16,16 @@ function App() {
   const FUNCTION = ['sin', 'cos', 'tan', 'log', 'ln', 'sqrt']
 
   //create options array
-  const OPTIONS = ['Deg', 'AC', 'EXP', 'x^y', '=']
+  const OPTIONS = ['Deg', 'x^y', '=']
 
   //function to handle clicks of buttons
   const clickHandler = (e) => {
     let value = e.target.value
+
+    if (value === 'AC'){
+      acfunc()
+      return
+    }
     if (calc.restarted) {
       setCalc(
         {
@@ -56,8 +61,11 @@ function App() {
       return
     }
     else {
-      if (value === 'x!'){
+      if (value === 'x!') {
         value = '!'
+      }
+      if (value === 'EXP') {
+        value = '10^'
       }
       setCalc(
         {
@@ -84,9 +92,6 @@ function App() {
   //evaluate the option
   const evaluateOption = (val) => {
     switch (val) {
-      case 'AC':
-        acfunc()
-        break
       case 'Deg':
         degfunc()
         break
@@ -95,14 +100,6 @@ function App() {
         break
       case 'EXP':
         //expfunc()
-        break
-      case 'x!':
-        setCalc({
-          ...calc,
-          equation: [],
-          display: '0',
-          functionInUse: false
-        })
         break
       default:
         errorMessage()
@@ -116,7 +113,10 @@ function App() {
       ...calc,
       equation: [],
       display: '0',
-      functionInUse: false
+      restarted: false,
+      degFlag: 'deg',
+      functionInUse: false,
+      result: 0
     })
   }
 
